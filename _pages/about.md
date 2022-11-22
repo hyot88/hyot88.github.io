@@ -1,5 +1,5 @@
 ---
-title: "이 블로그 설명서"
+title: "About Hyot"
 permalink: /about/
 layout: single
 ---
@@ -7,3 +7,4 @@ layout: single
 ## hyot88.github.io 블로그
 
 오 신기하다!
+(꾸밀 예정...)
