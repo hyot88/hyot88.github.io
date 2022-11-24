@@ -42,4 +42,4 @@ tistory, velog 등 개발 블로그로 사용되는 플랫폼이 여러 종류 �
 여러 시도를 해봤지만 무소용,,, 삽질에 삽질 끝에 결국 윈도우 환경에 우분투 가상머신을 깔아서 진행하게됐다.  
 
 혹시나 윈도우 환경에서 지킬을 설치하는 사람은 참고하기 바란다. 꼭 성공하시길...  
-https://blog.enjoydev.com/2019/install-jekyll-default-theme/
+<https://blog.enjoydev.com/2019/install-jekyll-default-theme/>
