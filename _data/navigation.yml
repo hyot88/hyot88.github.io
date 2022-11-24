@@ -1,7 +1,11 @@
 main:
-  - title: "About"
+  - title: "나는?"
     url: /about/
-  - title: "Categories"
+  - title: "프로젝트"
+    url: /project/
+  - title: "좋은 글"
+    url: /goodWriting/
+  - title: "카테고리"
     url: /categories/
-  - title: "Tags"
+  - title: "태그"
     url: /tags/
