@@ -1,5 +1,5 @@
 main:
-  - title: "나는?"
+  - title: "프로필"
     url: /about/
   - title: "프로젝트"
     url: /project/
