@@ -1,6 +1,6 @@
 ---
 title: "엘리베이터에서 만난 좋은 글귀"
-permalink: /goodWriting/
+permalink: /categories/goodWriting/
 layout: category
 author_profile: true
 taxonomy: 좋은글

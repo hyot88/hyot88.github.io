@@ -4,7 +4,7 @@ main:
   - title: "프로젝트"
     url: /project/
   - title: "좋은 글"
-    url: /goodWriting/
+    url: /categories/goodWriting/
   - title: "카테고리"
     url: /categories/
   - title: "태그"
