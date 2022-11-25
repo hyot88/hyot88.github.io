@@ -4,6 +4,6 @@ permalink: /project/
 layout: single
 ---
 
-- [ASAP](<{{site.url}}/categories/ASAP>)
+- ASAP
   - <https://github.com/hyot88/ASAP>
   - <https://github.com/hyot88/ASAP-api>
