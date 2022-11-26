@@ -3,8 +3,8 @@ main:
     url: /about/
   - title: "프로젝트"
     url: /project/
-  - title: "좋은 글"
-    url: /categories/goodWriting/
+  - title: "좋은생각"
+    url: /categories/goodIdea/
   - title: "카테고리"
     url: /categories/
   - title: "태그"
