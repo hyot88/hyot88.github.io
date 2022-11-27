@@ -3,6 +3,8 @@ title:  "github 블로그의 장단점"
 excerpt: "세팅하면서 느꼈던 부분"
 toc: true
 toc_sticky: true
+header:
+  teaser: /assets/images/dev.jpg
 
 categories:
   - blog
