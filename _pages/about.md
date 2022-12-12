@@ -2,6 +2,8 @@
 title: "hyot 프로필"
 permalink: /about/
 layout: single
+toc_sticky: false
+toc_ads: false
 ---
 
 현재  
