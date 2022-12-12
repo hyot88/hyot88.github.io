@@ -1,10 +1,12 @@
 main:
   - title: "프로필"
     url: /about/
+  - title: "JPA"
+    url: /categories/jpa/
+  - title: "Spring Boot"
+    url: /categories/springboot/
   - title: "프로젝트"
     url: /project/
-  - title: "좋은생각"
-    url: /categories/goodIdea/
   - title: "카테고리"
     url: /categories/
   - title: "태그"
