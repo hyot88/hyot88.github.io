@@ -289,3 +289,5 @@ defaults:
       comments: false
       share: true
       related: false
+      toc_sticky: true
+      toc_ads: true
