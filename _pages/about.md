@@ -1,7 +1,6 @@
 ---
 title: "hyot 프로필"
 permalink: /about/
-toc: true
 layout: single
 ---
 
