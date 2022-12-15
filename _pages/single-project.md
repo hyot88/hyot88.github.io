@@ -25,7 +25,7 @@ layout: single
     - <https://github.com/hyot88/ASAP>
     - <https://github.com/hyot88/ASAP-api>
   - 시스템 구조
-    - 구버전 (Travis CI 사용)
-      - ![old]({{site.url}}/assets/images/old.png "old")
-    - 현재버전 (Jenkins 사용)
-      - ![new]({{site.url}}/assets/images/new.png "new")
+    - 구버전 (Travis CI 사용)  
+![old]({{site.url}}/assets/images/old.png "old")
+    - 현재버전 (Jenkins 사용)  
+![new]({{site.url}}/assets/images/new.png "new")
