@@ -23,8 +23,7 @@ layout: single
     - NGINX 1.20
   - Git 주소
     - <https://github.com/hyot88/ASAP>
-    - <https://github.com/hyot88/ASAP-api>  
-
+    - <https://github.com/hyot88/ASAP-api>
 
 - ASAP 시스템 구조  
 구버전 (Travis CI 사용)  
