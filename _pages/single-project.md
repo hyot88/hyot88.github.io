@@ -4,7 +4,7 @@ permalink: /project/
 layout: single
 ---
 
-- ASAP (진행중)
+- ASAP
   - 미션 계획(1Day, 3Day, 5Day, 7Day)을 세우고 달성하기 위해, 동기부여를 만들어주는 사이트 제작
   - 사용 기술
     - Spring Boot 2.1.7
