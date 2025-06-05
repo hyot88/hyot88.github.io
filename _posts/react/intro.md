@@ -1,3 +1,16 @@
+---
+title:  "Intro"
+excerpt: "목차"
+toc: true
+toc_sticky: true
+header:
+  teaser: /assets/images/dev.jpg
+
+categories:
+- react
+last_modified_at: 2025-06-05T11:00
+---
+
 # React 마스터 클래스: 초급자/중급자를 위한 완벽 가이드
 
 단기간에 실력을 향상시키고 실무에서 바로 활용할 수 있는 React 가이드를 준비했습니다. 이 자료는 React 18/19 버전을 기준으로 작성되었으며, 면접에서 자주 물어보는 핵심 개념들도 포함하고 있습니다.
