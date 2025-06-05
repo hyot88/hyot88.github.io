@@ -1,5 +1,5 @@
 ---
-title:  "Intro"
+title:  "목차"
 excerpt: "목차"
 toc: true
 toc_sticky: true
