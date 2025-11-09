@@ -38,7 +38,7 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 ### 관측성 및 모니터링
 - **Spring Boot Actuator**: 모니터링을 위한 프로덕션 레디 기능
 - **Micrometer**: 애플리케이션 메트릭 파사드
-- **Zipkin & Brave**: 요청 흐름을 위한 분산 추적
+- **Zipkin & Brave**: 요청 흐름을 위한 분산 추적 (traceId를 서비스 간에 전파하여 전체 요청 흐름을 추적)
 - **Prometheus**: 메트릭 수집 및 알림 (구성됨)
 
 ### 보안 (계획됨)
@@ -66,12 +66,10 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 ### 공통 컴포넌트
 - **common-lib**: 서비스 전반에 걸쳐 사용되는 공유 모델, 이벤트 및 유틸리티
 
-## Git 저장소
-- [MSA 주문 클레임 시스템](https://github.com/hyot88/msa-order-claim)
-
 ## 시스템 아키텍처
 
 <a href="{{site.url}}/assets/images/flow_chart.svg" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.svg" alt="flow_chart" title="flow_chart"></a>
+
 
 시스템은 다음과 같은 흐름으로 이벤트 기반 마이크로서비스 아키텍처를 따릅니다:
 1. 클라이언트가 Keycloak으로 인증하고 토큰을 받습니다
@@ -81,6 +79,10 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 5. 인벤토리 및 결제 서비스가 이벤트를 처리합니다
 6. 결과는 order-service로 다시 전달됩니다
 7. 주문 상태가 그에 따라 업데이트됩니다
+
+모든 서비스 간 통신에서 traceId가 전파되어 전체 요청 흐름을 추적할 수 있습니다. 이를 통해 복잡한 마이크로서비스 환경에서도 요청의 전체 경로를 쉽게 파악하고 문제를 진단할 수 있습니다.
+
+<a href="{{site.url}}/assets/images/zipkin.png" target="_blank"><img src="{{site.url}}/assets/images/zipkin.png" alt="zipkin" title="zipkin"></a>
 
 ## API 엔드포인트
 
@@ -127,6 +129,7 @@ docker-compose -f docker/docker-compose.yml up -d
 - Prometheus 및 Grafana를 통한 모니터링 및 알림 강화
 - SpringDoc OpenAPI를 통한 포괄적인 API 문서화
 - claim-service의 완전한 구현
+
 
 ---
 
