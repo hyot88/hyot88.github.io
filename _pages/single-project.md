@@ -66,6 +66,9 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 ### 공통 컴포넌트
 - **common-lib**: 서비스 전반에 걸쳐 사용되는 공유 모델, 이벤트 및 유틸리티
 
+## Git 저장소
+- [MSA 주문 클레임 시스템](https://github.com/hyot88/msa-order-claim)
+
 ## 시스템 아키텍처
 
 <a href="{{site.url}}/assets/images/flow_chart.svg" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.svg" alt="flow_chart" title="flow_chart"></a>
