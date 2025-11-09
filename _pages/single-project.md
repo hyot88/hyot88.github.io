@@ -4,7 +4,7 @@ permalink: /project/
 layout: single
 ---
 
-# MSA 주문 클레임 시스템
+# 1. MSA 주문 클레임 시스템
 
 Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및 클레임 관리 시스템입니다.
 
@@ -128,7 +128,7 @@ docker-compose -f docker/docker-compose.yml up -d
 
 ---
 
-# ASAP
+# 2. ASAP
 
 미션 계획(1Day, 3Day, 5Day, 7Day)을 세우고 달성하기 위해, 동기부여를 만들어주는 사이트 제작
 
