@@ -166,8 +166,8 @@ docker-compose -f docker/docker-compose.yml up -d
 - **NGINX 1.20**: 웹 서버 및 리버스 프록시
 
 ## Git 저장소
-- [ASAP 프론트엔드](https://github.com/hyot88/ASAP)
-- [ASAP API 백엔드](https://github.com/hyot88/ASAP-api)
+- [ASAP v1](https://github.com/hyot88/ASAP)
+- [ASAP v2 - API 백엔드](https://github.com/hyot88/ASAP-api)
 
 ## 시스템 아키텍처
 
