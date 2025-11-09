@@ -69,7 +69,7 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 
 ## 시스템 아키텍처
 
-![flow_chart]({{site.url}}/assets/images/flow_chart.svg "flow_chart")
+<a href="{{site.url}}/assets/images/flow_chart.svg" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.svg" alt="flow_chart" title="flow_chart"></a>
 
 시스템은 다음과 같은 흐름으로 이벤트 기반 마이크로서비스 아키텍처를 따릅니다:
 1. 클라이언트가 Keycloak으로 인증하고 토큰을 받습니다
@@ -165,7 +165,7 @@ docker-compose -f docker/docker-compose.yml up -d
 ## 시스템 아키텍처
 
 ### 구버전 (Travis CI 사용)
-![old]({{site.url}}/assets/images/old.png "old")
+<a href="{{site.url}}/assets/images/old.png" target="_blank"><img src="{{site.url}}/assets/images/old.png" alt="old" title="old"></a>
 
 ### 현재버전 (Jenkins 사용)
-![new]({{site.url}}/assets/images/new.png "new")
+<a href="{{site.url}}/assets/images/new.png" target="_blank"><img src="{{site.url}}/assets/images/new.png" alt="new" title="new"></a>
