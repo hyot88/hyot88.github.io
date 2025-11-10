@@ -10,6 +10,9 @@ layout: single
 
 Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및 클레임 관리 시스템입니다.
 
+## Git 저장소
+- [MSA 주문 클레임 시스템](https://github.com/hyot88/msa-order-claim)
+
 ## 사용 기술
 
 ### 핵심 기술
@@ -66,12 +69,9 @@ Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및
 ### 공통 컴포넌트
 - **common-lib**: 서비스 전반에 걸쳐 사용되는 공유 모델, 이벤트 및 유틸리티
 
-## Git 저장소
-- [MSA 주문 클레임 시스템](https://github.com/hyot88/msa-order-claim)
-
 ## 시스템 아키텍처
 
-<a href="{{site.url}}/assets/images/flow_chart.svg" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.svg" alt="flow_chart" title="flow_chart"></a>
+<a href="{{site.url}}/assets/images/flow_chart.png" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.png" alt="flow_chart" title="flow_chart"></a>
 
 
 시스템은 다음과 같은 흐름으로 이벤트 기반 마이크로서비스 아키텍처를 따릅니다:
@@ -142,6 +142,10 @@ docker-compose -f docker/docker-compose.yml up -d
 
 미션 계획(1Day, 3Day, 5Day, 7Day)을 세우고 달성하기 위해, 동기부여를 만들어주는 사이트 제작
 
+## Git 저장소
+- [ASAP v1](https://github.com/hyot88/ASAP)
+- [ASAP v2 - API 백엔드](https://github.com/hyot88/ASAP-api)
+
 ## 사용 기술
 
 ### 핵심 기술
@@ -167,10 +171,6 @@ docker-compose -f docker/docker-compose.yml up -d
 - **Travis CI**: 지속적 통합 (구버전)
 - **Jenkins**: 지속적 통합 및 배포 (현재버전)
 - **NGINX 1.20**: 웹 서버 및 리버스 프록시
-
-## Git 저장소
-- [ASAP v1](https://github.com/hyot88/ASAP)
-- [ASAP v2 - API 백엔드](https://github.com/hyot88/ASAP-api)
 
 ## 시스템 아키텍처
 
