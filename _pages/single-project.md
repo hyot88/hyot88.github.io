@@ -1,178 +1,217 @@
 ---
-title: "진행중인 개인 프로젝트"
+title: "프로젝트"
 permalink: /project/
 layout: single
 ---
 
 <br><br>
 
-# 1. MSA 주문 클레임 시스템
+# 🚀 Backend Developer Portfolio
 
-Spring Boot와 Spring Cloud로 구축된 마이크로서비스 기반 주문 및 클레임 관리 시스템입니다.
+## 👋 소개
 
-## 사용 기술
+저는 **토이 프로젝트를 통해 개발 역량을 꾸준히 쌓아가는 백엔드 개발자 안효성**입니다.
 
-### 핵심 기술
-- **Java 21**: 최신 LTS 버전의 Java
-- **Spring Boot 3.3.3**: 프로덕션 레디 애플리케이션 구축을 위한 프레임워크
-- **Spring Cloud 2023.0.3**: 클라우드 네이티브 애플리케이션 구축을 위한 도구
-
-### 마이크로서비스 아키텍처
-- **Spring Cloud Netflix Eureka**: 서비스 디스커버리 및 등록
-- **Spring Cloud Gateway**: 라우팅 및 필터링을 위한 API 게이트웨이
-- **Spring Cloud Config**: 중앙 집중식 구성 관리
-- **Spring Cloud Bus**: 구성 변경을 위한 분산 메시징
-
-### 메시징 및 이벤트 기반 아키텍처
-- **Apache Kafka**: 비동기 통신을 위한 이벤트 스트리밍 플랫폼
-- **Outbox 패턴**: 트랜잭션 아웃박스를 통한 안정적인 메시지 전달
-
-### 회복성 및 장애 허용
-- **Resilience4j**: 서킷 브레이커, 속도 제한기 및 재시도 메커니즘
-- **Spring Cloud Circuit Breaker**: 폴백 메커니즘을 통한 장애 허용
-
-### 영속성
-- **Spring Data JPA**: JPA를 사용한 데이터 액세스 계층
-- **PostgreSQL**: 영구 저장소를 위한 관계형 데이터베이스
-
-### 관측성 및 모니터링
-- **Spring Boot Actuator**: 모니터링을 위한 프로덕션 레디 기능
-- **Micrometer**: 애플리케이션 메트릭 파사드
-- **Zipkin & Brave**: 요청 흐름을 위한 분산 추적 (traceId를 서비스 간에 전파하여 전체 요청 흐름을 추적)
-- **Prometheus**: 메트릭 수집 및 알림 (구성됨)
-
-### 보안 (계획됨)
-- **Keycloak**: 신원 및 접근 관리
-- **OAuth2/OpenID Connect**: 인증 및 권한 부여 프로토콜
-
-### 개발 도구
-- **Gradle**: 빌드 자동화 도구
-- **Lombok**: 상용구 코드 감소
-
-## 모듈
-
-### 핵심 서비스
-- **order-service**: 주문 생성, 처리 및 상태 업데이트 관리
-- **payment-service**: 주문에 대한 결제 처리
-- **inventory-service**: 제품 재고 및 재고 확인 관리
-- **claim-service**: 주문 클레임 및 반품 처리 (개발 중)
-
-### 인프라 서비스
-- **api-gateway**: 라우팅 및 로드 밸런싱을 통한 모든 클라이언트 요청의 진입점
-- **discovery**: 서비스 디스커버리 및 등록을 위한 Eureka 서버
-- **config-server**: 중앙 집중식 구성 관리
-- **outbox-relay**: 안정적인 이벤트 발행을 위한 아웃박스 패턴 구현
-
-### 공통 컴포넌트
-- **common-lib**: 서비스 전반에 걸쳐 사용되는 공유 모델, 이벤트 및 유틸리티
-
-## 시스템 아키텍처
-
-<a href="{{site.url}}/assets/images/flow_chart.svg" target="_blank"><img src="{{site.url}}/assets/images/flow_chart.svg" alt="flow_chart" title="flow_chart"></a>
-
-
-시스템은 다음과 같은 흐름으로 이벤트 기반 마이크로서비스 아키텍처를 따릅니다:
-1. 클라이언트가 Keycloak으로 인증하고 토큰을 받습니다
-2. 요청은 API 게이트웨이를 통해 라우팅됩니다
-3. 주문은 order-service에서 생성됩니다
-4. 이벤트는 아웃박스 패턴을 통해 Kafka에 발행됩니다
-5. 인벤토리 및 결제 서비스가 이벤트를 처리합니다
-6. 결과는 order-service로 다시 전달됩니다
-7. 주문 상태가 그에 따라 업데이트됩니다
-
-모든 서비스 간 통신에서 traceId가 전파되어 전체 요청 흐름을 추적할 수 있습니다. 이를 통해 복잡한 마이크로서비스 환경에서도 요청의 전체 경로를 쉽게 파악하고 문제를 진단할 수 있습니다.
-
-<a href="{{site.url}}/assets/images/zipkin.png" target="_blank"><img src="{{site.url}}/assets/images/zipkin.png" alt="zipkin" title="zipkin"></a>
-
-## API 엔드포인트
-
-### API 게이트웨이 (포트: 8080)
-- 모든 클라이언트 요청의 주요 진입점
-- 적절한 서비스로 요청 라우팅
-- 회복성을 위한 서킷 브레이커 패턴 구현
-
-### 주문 서비스 (포트: 9001)
-- **POST /orders**: 새 주문 생성
-  - 요청 본문: `{ "userId": "string", "totalAmount": number }`
-  - 응답: 주문 ID (UUID)
-- **GET /orders/{id}**: ID로 주문 세부 정보 가져오기
-  - 응답: 주문 세부 정보
-
-### 클레임 서비스
-- **POST /claims**: 새 클레임 생성
-- **GET /claims/{id}**: ID로 클레임 세부 정보 가져오기
-
-## 시작하기
-
-### 사전 요구 사항
-- Java 21
-- Docker 및 Docker Compose
-- Gradle
-
-### 애플리케이션 실행
-1. 인프라 서비스 시작:
-```bash
-docker-compose -f docker/docker-compose.yml up -d
-```
-
-2. 다음 순서로 서비스 시작:
-  - discovery
-  - config-server
-  - order-service, payment-service, inventory-service
-  - api-gateway
-
-## 개발 로드맵
-
-### 계획된 기능
-- 인증 및 권한 부여를 위한 Keycloak 통합
-- 보안 API 액세스를 위한 OAuth2/OpenID Connect 구현
-- Prometheus 및 Grafana를 통한 모니터링 및 알림 강화
-- SpringDoc OpenAPI를 통한 포괄적인 API 문서화
-- claim-service의 완전한 구현
-
+실무에서 접한 기술들을 단순히 사용하는 것에 그치지 않고, 직접 설계하고 구현해보며 깊이 있는 이해를 추구합니다. MSA 운영 경험을 바탕으로 제로베이스부터 시스템을 구축해보고, 나아가 대규모 트래픽을 처리하는 시스템 아키텍처까지 시야를 넓혀가고 있습니다.
 
 ---
 
-<br><br>
+## 📂 프로젝트 목록
 
-# 2. ASAP
+| # | 프로젝트 | 핵심 키워드 | 상태 |
+|---|----------|-------------|------|
+| 1 | [spike-order](#1-spike-order) | 시스템 아키텍처, 대량 트래픽, CQRS, SAGA | 🔄 개발 진행중 |
+| 2 | [msa-order-claim](#2-msa-order-claim) | MSA, Outbox 패턴, Kafka, 분산 추적 | ✅ 완료 |
+| 3 | [ASAP](#3-asap) | OAuth2, 게이미피케이션, 무중단 배포 | ✅ 완료 |
+| 4 | [ASAP-api](#4-asap-api) | JWT, Stateless 인증, RESTful API | ✅ 완료 |
 
-미션 계획(1Day, 3Day, 5Day, 7Day)을 세우고 달성하기 위해, 동기부여를 만들어주는 사이트 제작
+---
 
-## 사용 기술
+## 1. spike-order
 
-### 핵심 기술
-- **Spring Boot 2.1.7**: 프로덕션 레디 애플리케이션 구축을 위한 프레임워크
-- **JAVA 11**: 안정적인 LTS 버전의 Java
-- **JPA**: 객체 관계 매핑을 위한 자바 퍼시스턴스 API
+> **MSA를 넘어 시스템 아키텍처 전체의 큰 그림을 보기 위한 토이 프로젝트**
 
-### 인증 및 보안
-- **JWT 0.9.1**: JSON 웹 토큰을 통한 인증
-- **OAuth2**: 소셜 로그인 지원 (Google, Naver, Kakao)
+### 📌 프로젝트 개요
 
-### 프론트엔드 및 API
-- **Mustache**: 서버 사이드 템플릿 엔진
-- **jQuery, JavaScript**: 클라이언트 사이드 스크립팅
-- **Swagger 2.9.2**: API 문서화 및 테스트
+배달앱에서 **한 가게에 이벤트로 인해 주문이 대량으로 몰리는 상황**을 가정하고, 초당 수천 건의 주문을 안정적으로 처리할 수 있는 시스템 아키텍처를 설계했습니다.
 
-### 데이터베이스
-- **H2 Database**: 개발 및 테스트 환경용 인메모리 데이터베이스
-- **MySQL**: 프로덕션 환경용 관계형 데이터베이스
+### 🔑 기술적 핵심 포인트
 
-### 인프라 및 배포
-- **AWS**: 클라우드 인프라 (EC2, RDS, IAM, S3, CodeDeploy)
-- **Travis CI**: 지속적 통합 (구버전)
-- **Jenkins**: 지속적 통합 및 배포 (현재버전)
-- **NGINX 1.20**: 웹 서버 및 리버스 프록시
+| 영역 | 핵심 내용 |
+|------|----------|
+| **핫패스 최소화** | 유저 응답에 필수적인 것만 동기 처리, Outbox 패턴으로 비동기 이벤트 발행 |
+| **CQRS** | 읽기/쓰기 분리, Replica DB + Elasticsearch + Redis 캐시 조합 |
+| **SAGA 패턴** | 분산 환경에서 보상 트랜잭션을 통한 데이터 일관성 보장 |
+| **장애 격리** | Circuit Breaker, Timeout, Fallback으로 외부 시스템 장애 전파 방지 |
+| **실시간 처리** | Apache Flink + RocksDB State Backend로 스트림 파이프라인 구성 |
+| **캐시 전략** | Singleflight 패턴으로 Cache Stampede 방지, Redis Pub/Sub 캐시 무효화 |
 
-## Git 저장소
-- [ASAP v1](https://github.com/hyot88/ASAP)
-- [ASAP v2 - API 백엔드](https://github.com/hyot88/ASAP-api)
+### 🛠 기술 스택
 
-## 시스템 아키텍처
+`Spring Boot` `Spring Data JPA` `Kafka` `Redis` `Elasticsearch` `Flink` `Resilience4j` `Eureka` `KeyCloak`
 
-### 구버전 (Travis CI 사용)
-<a href="{{site.url}}/assets/images/old.png" target="_blank"><img src="{{site.url}}/assets/images/old.png" alt="old" title="old"></a>
+### 🔗 상세 정보
 
-### 현재버전 (Jenkins 사용)
-<a href="{{site.url}}/assets/images/new.png" target="_blank"><img src="{{site.url}}/assets/images/new.png" alt="new" title="new"></a>
+- GitHub: [spike-order Repository](https://github.com/hyot88/spike-order)
+
+---
+
+## 2. msa-order-claim
+
+> **운영만 해왔던 MSA 구조를 제로베이스부터 직접 구축해보고 싶어 시작한 토이 프로젝트**
+
+### 📌 프로젝트 개요
+
+오픈마켓 개발 경험을 떠올려 해당 도메인을 접목하여, **주문 생성 → 재고 확인 → 결제 처리 → 주문 승인/취소**가 이벤트 기반으로 비동기 처리되는 마이크로서비스 시스템을 구축했습니다.
+
+### 🔑 기술적 핵심 포인트
+
+| 영역 | 핵심 내용 |
+|------|----------|
+| **Transactional Outbox 패턴** | DB 트랜잭션과 이벤트 발행의 원자성 보장, At-least-once 전달 |
+| **Saga 패턴 (Choreography)** | 서비스 간 이벤트 기반 분산 트랜잭션 관리 |
+| **멱등성 보장** | ProcessedMessage 테이블로 중복 메시지 처리 방지 |
+| **분산 추적** | Zipkin + Micrometer Tracing으로 서비스 간 요청 흐름 추적 |
+| **동시성 제어** | `FOR UPDATE SKIP LOCKED`로 Outbox 폴링 시 동시성 이슈 해결 |
+| **서비스 디스커버리** | Eureka 기반 동적 서비스 등록/조회 |
+
+### 🏗 모듈 구성
+
+```
+msa-order-claim/
+├── api-gateway/          # API 게이트웨이 (Circuit Breaker)
+├── discovery/            # Eureka 서버
+├── config-server/        # 중앙 집중식 설정 관리
+├── order-service/        # 주문 서비스
+├── inventory-service/    # 재고 서비스
+├── payment-service/      # 결제 서비스
+├── outbox-relay/         # Outbox → Kafka 이벤트 릴레이
+└── common-lib/           # 공통 라이브러리
+```
+
+### 🛠 기술 스택
+
+`Java 21` `Spring Boot 3.3` `Spring Cloud` `Kafka` `PostgreSQL` `Resilience4j` `Eureka` `Zipkin`
+
+### 🔗 상세 정보
+
+- GitHub: [msa-order-claim Repository](https://github.com/hyot88/msa-order-claim)
+
+---
+
+## 3. ASAP
+
+> **동기부여를 줄 수 있는 재미난 서비스가 뭐가 있을까 고민하다 만들게 된 프로젝트**
+
+### 📌 프로젝트 개요
+
+사용자가 하루 두 번(오전/오후) 'Took'을 던지며 미션을 수행하고, 성공 시 티어 포인트를 획득하여 랭킹에 도전하는 **게이미피케이션 기반 습관 형성 서비스**입니다.
+
+### 🔑 기술적 핵심 포인트
+
+| 영역 | 핵심 내용 |
+|------|----------|
+| **OAuth2 소셜 로그인** | Google, Naver, Kakao 통합 인증, Provider별 사용자 정보 매핑 |
+| **게이미피케이션** | 7단계 티어 시스템(Bronze~Master), 실시간 랭킹, 포인트 보상/패널티 |
+| **QueryDSL** | 타입 안전 동적 쿼리, 서브쿼리를 활용한 복잡한 업데이트 처리 |
+| **복합 키 설계** | `@EmbeddedId`로 email + registrationId 복합키 구현 |
+| **스케줄 기반 정산** | Spring Scheduler로 미션 성공/실패 자동 판정 |
+| **무중단 배포** | NGINX + Blue-Green 배포, 포트 스위칭 자동화 |
+
+### 🎮 미션 시스템
+
+| 미션 | 기간 | 성공 보상 | 실패 패널티 |
+|------|------|----------|------------|
+| Tick 1Day | 1일 | +10 pt | -10 × 티어배수 |
+| Tick 3Day | 3일 | +60 pt | -60 × 티어배수 |
+| Quick 5Day | 5일 | +150 pt | -150 × 티어배수 |
+| Quick 7Day | 7일 | +280 pt | -280 × 티어배수 |
+
+### 🛠 기술 스택
+
+`Java 11` `Spring Boot 2.1` `Spring Security` `OAuth2` `QueryDSL` `JPA` `MariaDB` `NGINX` `Jenkins` `AWS`
+
+### 🔗 상세 정보
+
+- GitHub: [ASAP Repository](https://github.com/hyot88/ASAP)
+
+---
+
+## 4. ASAP-api
+
+> **ASAP 서비스의 백엔드와 프론트엔드를 분리하여 백엔드 코드만 구성한 프로젝트**
+
+### 📌 프로젝트 개요
+
+기존 ASAP의 세션 기반 인증을 **JWT 기반 Stateless 인증**으로 전환하여, 웹/모바일 앱/외부 서비스 등 다양한 클라이언트에서 통합된 API를 사용할 수 있도록 설계했습니다.
+
+### 🔑 기술적 핵심 포인트
+
+| 영역 | 핵심 내용 |
+|------|----------|
+| **JWT 인증** | HS256 서명 알고리즘, 토큰 만료 처리 (발급 후 10분) |
+| **Vendor 기반 인증** | 클라이언트(업체)별 SecretKey 관리로 API 접근 제어 |
+| **Spring Security Filter** | JWTAuthorizationFilter로 토큰 검증 파이프라인 구현 |
+| **Stateless 설계** | 서버에 세션 저장 없이 토큰만으로 인증 처리 |
+| **Swagger JWT 지원** | API 문서에서 JWT 인증 테스트 가능 |
+
+### 🔐 JWT 검증 플로우
+
+```
+1. 헤더 스키마 체크 (Bearer 토큰 확인)
+2. JWT Payload에서 업체 코드(jti) 추출
+3. 업체 유효성 검증 (Vendor Enum)
+4. SecretKey로 JWT 서명 검증
+5. 토큰 유효 기간 검증
+6. Spring Security 인증 객체 등록
+```
+
+### 📊 ASAP vs ASAP-api 비교
+
+| 구분 | ASAP (v1) | ASAP-api (v2) |
+|------|-----------|---------------|
+| 인증 방식 | OAuth2 + Session | JWT Token |
+| 상태 관리 | Stateful (세션) | Stateless (토큰) |
+| 클라이언트 | 웹 브라우저 | 웹, 모바일, 외부 서비스 |
+| 템플릿 엔진 | Mustache | 없음 (순수 API) |
+
+### 🛠 기술 스택
+
+`Java 11` `Spring Boot 2.1` `Spring Security` `jjwt` `JPA` `MariaDB` `NGINX` `Travis CI` `AWS`
+
+### 🔗 상세 정보
+
+- GitHub: [ASAP-api Repository](https://github.com/hyot88/ASAP-api)
+
+---
+
+## 📚 기술 키워드 종합
+
+### Architecture & Patterns
+`MSA` `CQRS` `SAGA` `Outbox Pattern` `Event-Driven` `Blue-Green Deployment`
+
+### Spring Ecosystem
+`Spring Boot` `Spring Cloud` `Spring Security` `Spring Data JPA` `QueryDSL`
+
+### Messaging & Streaming
+`Apache Kafka` `Apache Flink` `Redis Pub/Sub`
+
+### Database & Cache
+`PostgreSQL` `MariaDB` `Redis` `Elasticsearch`
+
+### Resilience & Observability
+`Resilience4j` `Circuit Breaker` `Zipkin` `Micrometer Tracing`
+
+### Authentication
+`OAuth2` `JWT` `KeyCloak`
+
+### Infrastructure
+`AWS (EC2, RDS, S3, CodeDeploy)` `NGINX` `Docker` `Jenkins` `Travis CI`
+
+---
+
+## 📫 Contact
+
+- Email: allsdfgh88@gmail.com
+- LinkedIn: www.linkedin.com/in/효성-안-b5b3b7393
+- GitHub: https://github.com/hyot88
