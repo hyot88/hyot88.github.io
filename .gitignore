@@ -27,3 +27,11 @@ codekit-config.json
 .sass-cache
 _asset_bundler_cache
 _site
+
+# Explicitly include Jekyll folders
+!_data/
+!_includes/
+!_layouts/
+!_pages/
+!_posts/
+!_sass/
