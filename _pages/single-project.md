@@ -20,10 +20,10 @@ layout: single
 
 | # | 프로젝트 | 핵심 키워드 | 상태 |
 |---|----------|-------------|------|
-| 1 | [spike-order](#1-spike-order) | 시스템 아키텍처, 대량 트래픽, CQRS, SAGA | 🔄 개발 진행중 |
-| 2 | [msa-order-claim](#2-msa-order-claim) | MSA, Outbox 패턴, Kafka, 분산 추적 | ✅ 완료 |
-| 3 | [ASAP](#3-asap) | OAuth2, 게이미피케이션, 무중단 배포 | ✅ 완료 |
-| 4 | [ASAP-api](#4-asap-api) | JWT, Stateless 인증, RESTful API | ✅ 완료 |
+| 1 | <a href="https://github.com/hyot88/spike-order" target="_blank">spike-order</a> | 시스템 아키텍처, 대량 트래픽, CQRS, SAGA | 🔄 개발 진행중 |
+| 2 | <a href="https://github.com/hyot88/msa-order-claim" target="_blank">msa-order-claim</a> | MSA, Outbox 패턴, Kafka, 분산 추적 | ✅ 완료 |
+| 3 | <a href="https://github.com/hyot88/ASAP" target="_blank">ASAP</a> | OAuth2, 게이미피케이션, 무중단 배포 | ✅ 완료 |
+| 4 | <a href="https://github.com/hyot88/ASAP-api" target="_blank">ASAP-api</a> | JWT, Stateless 인증, RESTful API | ✅ 완료 |
 
 ---
 
@@ -52,7 +52,7 @@ layout: single
 
 ### 🔗 상세 정보
 
-- GitHub: [spike-order Repository](https://github.com/hyot88/spike-order)
+- GitHub: <a href="https://github.com/hyot88/spike-order" target="_blank">spike-order Repository</a>
 
 ---
 
@@ -95,7 +95,7 @@ msa-order-claim/
 
 ### 🔗 상세 정보
 
-- GitHub: [msa-order-claim Repository](https://github.com/hyot88/msa-order-claim)
+- GitHub: <a href="https://github.com/hyot88/msa-order-claim" target="_blank">msa-order-claim Repository</a>
 
 ---
 
@@ -133,7 +133,7 @@ msa-order-claim/
 
 ### 🔗 상세 정보
 
-- GitHub: [ASAP Repository](https://github.com/hyot88/ASAP)
+- GitHub: <a href="https://github.com/hyot88/ASAP" target="_blank">ASAP Repository</a>
 
 ---
 
@@ -181,7 +181,7 @@ msa-order-claim/
 
 ### 🔗 상세 정보
 
-- GitHub: [ASAP-api Repository](https://github.com/hyot88/ASAP-api)
+- GitHub: <a href="https://github.com/hyot88/ASAP-api" target="_blank">ASAP-api Repository</a>
 
 ---
 
@@ -213,5 +213,5 @@ msa-order-claim/
 ## 📫 Contact
 
 - Email: allsdfgh88@gmail.com
-- LinkedIn: www.linkedin.com/in/효성-안-b5b3b7393
-- GitHub: https://github.com/hyot88
+- LinkedIn: <a href="https://www.linkedin.com/in/효성-안-b5b3b7393" target="_blank">www.linkedin.com/in/효성-안-b5b3b7393</a>
+- GitHub: <a href="https://github.com/hyot88" target="_blank">https://github.com/hyot88</a>
